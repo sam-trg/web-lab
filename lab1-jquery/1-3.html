@@ -1,1 +1,73 @@
 <!-- Create a web page to design a birthday card shown below. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Card</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #card { width: 300px; height: 400px; padding: 10px; border: 2px double black; text-align: center; }
+        #preview { background: yellow; font-family: Verdana; font-size: 25px; }
+    </style>
+</head>
+<body>
+
+    <label>Choose a background color:
+        <select id="bgColor">
+            <option value="yellow">Yellow</option>
+            <option value="pink">Pink</option>
+            <option value="blue">Blue</option>
+        </select>
+    </label><br>
+
+    <label>Choose a font:
+        <select id="font">
+            <option value="Verdana">Verdana</option>
+            <option value="Arial">Arial</option>
+            <option value="Times New Roman">Times New Roman</option>
+        </select>
+    </label><br>
+
+    <label>Specify a numeric font size:
+        <input type="number" id="fontSize" value="25">
+    </label><br>
+
+    <label>Choose a border style:
+        <input type="radio" name="border" value="none"> None
+        <input type="radio" name="border" value="double" checked> Double
+        <input type="radio" name="border" value="solid"> Solid
+    </label><br>
+
+    <label><input type="checkbox" id="addImage" checked> Add the Default Picture</label><br>
+
+    <label>Enter the greeting text below:</label><br>
+    <textarea id="message">Happy Birthday, and many more</textarea><br>
+
+    <button id="update">Update</button>
+
+    <div id="card">
+        <div id="preview">
+            <p id="text">Happy Birthday, and many more</p>
+            <img id="cake" src="https://via.placeholder.com/150" alt="Cake">
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#update").click(function () {
+                $("#preview").css({
+                    "background": $("#bgColor").val(),
+                    "font-family": $("#font").val(),
+                    "font-size": $("#fontSize").val() + "px"
+                });
+                $("#card").css("border-style", $("input[name='border']:checked").val());
+                $("#text").text($("#message").val());
+                $("#cake").toggle($("#addImage").is(":checked"));
+            });
+        });
+    </script>
+
+</body>
+</html>

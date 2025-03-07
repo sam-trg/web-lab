@@ -1,3 +1,93 @@
 <!-- Write a page which contains a table with 3x3 dimensions(fill some data) and one image. 
  Style the rows with alternate color. 
  Move the table and iamge together from right to left when the button is clicked. -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Styled jQuery Table</title>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <style>
+         body {
+             font-family: Arial, sans-serif;
+             text-align: center;
+             background-color: #f4f4f4;
+             margin: 50px;
+         }
+         .wrapper {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+         }
+         .container {
+             position: relative;
+             background: white;
+             padding: 20px;
+             border-radius: 10px;
+             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+             margin-top: 20px;
+         }
+         table {
+             width: 250px;
+             border-collapse: collapse;
+             margin-bottom: 15px;
+         }
+         th, td {
+             border: 2px solid black;
+             padding: 12px;
+             text-align: center;
+             font-size: 16px;
+         }
+         tr:nth-child(even) {
+             background-color: #e0e0e0;
+         }
+         tr:nth-child(odd) {
+             background-color: #cfcfcf;
+         }
+         img {
+             width: 120px;
+             display: block;
+             margin: auto;
+             border-radius: 5px;
+         }
+         button {
+             margin-top: 10px;
+             padding: 10px 20px;
+             font-size: 16px;
+             border: none;
+             background-color: #007BFF;
+             color: white;
+             border-radius: 5px;
+             cursor: pointer;
+         }
+         button:hover {
+             background-color: #0056b3;
+         }
+     </style>
+ </head>
+ <body>
+ 
+     <div class="wrapper">
+         <button id="moveBtn">Move Left</button>
+         <div class="container">
+             <table>
+                 <tr><td>A1</td><td>B1</td><td>C1</td></tr>
+                 <tr><td>A2</td><td>B2</td><td>C2</td></tr>
+                 <tr><td>A3</td><td>B3</td><td>C3</td></tr>
+             </table>
+             <img src="https://picsum.photos/120" alt="Sample Image">
+         </div>
+     </div>
+ 
+     <script>
+         $(document).ready(function(){
+             $("#moveBtn").click(function(){
+                 $(".container").animate({left: "-=100px"}, "slow");
+             });
+         });
+     </script>
+ 
+ </body>
+ </html>
+ 
